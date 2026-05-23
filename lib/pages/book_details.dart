@@ -95,7 +95,7 @@ class DetailPageState extends State<DetailPage> {
                               "${widget.book.author}",
                               style: Theme.of(context)
                                   .textTheme
-                                  .subtitle1!
+                                  .titleMedium!
                                   .copyWith(),
                             ),
                             const SizedBox(
@@ -103,7 +103,7 @@ class DetailPageState extends State<DetailPage> {
                             ),
                             Text(
                               "Total time: ${widget.book.totalTime}",
-                              style: Theme.of(context).textTheme.subtitle1,
+                              style: Theme.of(context).textTheme.titleMedium,
                             ),
                           ],
                         ),

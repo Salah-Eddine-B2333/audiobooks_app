@@ -58,9 +58,9 @@ class AudioBooksAppState extends State<AudioBooksApp>
       child: MaterialApp(
         theme: ThemeData(
           textTheme: const TextTheme(
-            headline6:
+            titleLarge:
                 TextStyle(fontFamily: "Aleo", fontWeight: FontWeight.bold),
-            subtitle1: TextStyle(fontFamily: "Slabo", fontSize: 16.0),
+            titleMedium: TextStyle(fontFamily: "Slabo", fontSize: 16.0),
           ),
           primarySwatch: Colors.pink,
         ),
