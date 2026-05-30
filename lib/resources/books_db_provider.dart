@@ -18,7 +18,7 @@ class DatabaseHelper implements Cache {
 
   static const String bookTable = "books";
   final String authorTable = "authors";
-  static const String audioFilesTable = "audiofiles";
+  static const String audioFilesTable = "audio files";
 
   static const String columnId = "identifier";
   static const String columnTitle = "title";
@@ -75,7 +75,7 @@ class DatabaseHelper implements Cache {
 
   DatabaseHelper.internal();
 
-  _initDB() async {
+  Future<Database> _initDB() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentsDirectory.path, "maindb.db");
     var db = await openDatabase(path, version: 1, onCreate: _onCreate);

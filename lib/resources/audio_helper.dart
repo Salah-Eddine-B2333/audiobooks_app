@@ -16,6 +16,7 @@ Future<AudioHandler> initAudioService() async {
 
 class MyAudioHandler extends BaseAudioHandler {
   final _player = AudioPlayer();
+  // ignore: deprecated_member_use
   final _playlist = ConcatenatingAudioSource(children: []);
 
   MyAudioHandler() {
@@ -78,7 +79,7 @@ class MyAudioHandler extends BaseAudioHandler {
       final List<MediaItem> newQueue = queue.value;
       if (index == null || newQueue.isEmpty) return;
       if (_player.shuffleModeEnabled) {
-        index = _player.shuffleIndices![index];
+        index = _player.shuffleIndices[index];
       }
       final oldMediaItem = newQueue[index];
       final MediaItem newMediaItem = oldMediaItem.copyWith(duration: duration);
@@ -89,14 +90,14 @@ class MyAudioHandler extends BaseAudioHandler {
   }
 
   void _listenForCurrentSongIndexChanges() {
-    debugPrint("listenfor currentsong index");
+    debugPrint("listen for current song index");
     _player.currentIndexStream.listen((index) {
       debugPrint('Current song index $index');
       final playlist = queue.value;
       if (index == null || playlist.isEmpty || index >= playlist.length) return;
 
       if (_player.shuffleModeEnabled) {
-        index = _player.shuffleIndices![index];
+        index = _player.shuffleIndices[index];
       }
       mediaItem.add(playlist[index]);
     });
@@ -113,7 +114,7 @@ class MyAudioHandler extends BaseAudioHandler {
 
   @override
   Future<void> addQueueItems(List<MediaItem> mediaItems) async {
-    debugPrint('Thses are added ques $mediaItems');
+    debugPrint('These are added ques $mediaItems');
     // manage Just Audio
 
     final audioSource = mediaItems.map(_createAudioSource);
@@ -126,7 +127,7 @@ class MyAudioHandler extends BaseAudioHandler {
 
   @override
   Future<void> updateQueue(List<MediaItem> queue) async {
-    debugPrint('Thses are added ques $queue');
+    debugPrint('These are added ques $queue');
     // manage Just Audio
 
     final audioSource = queue.map(_createAudioSource);
@@ -170,7 +171,7 @@ class MyAudioHandler extends BaseAudioHandler {
 
   @override
   Future<void> play() {
-    debugPrint('About to playyyy');
+    debugPrint('About to play');
     return _player.play();
   }
 
@@ -184,7 +185,7 @@ class MyAudioHandler extends BaseAudioHandler {
   Future<void> skipToQueueItem(int index) async {
     if (index < 0 || index >= queue.value.length) return;
     if (_player.shuffleModeEnabled) {
-      index = _player.shuffleIndices![index];
+      index = _player.shuffleIndices[index];
     }
     _player.seek(Duration.zero, index: index);
   }
